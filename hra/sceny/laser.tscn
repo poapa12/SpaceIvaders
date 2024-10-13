@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjekvh3trdn1n"]
+
+[ext_resource type="Texture2D" uid="uid://thhai6r1e5nk" path="res://sceny/obr/bbuuu.png" id="1_td834"]
+[ext_resource type="Script" path="res://sceny/laser.gd" id="1_v4ono"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew5al"]
+size = Vector2(7, 25)
+
+[node name="laser" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_v4ono")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(122, 34)
+texture = ExtResource("1_td834")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(121.5, 39.5)
+shape = SubResource("RectangleShape2D_ew5al")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(121.75, 56)
+scale = Vector2(0.375, 0.0999998)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
